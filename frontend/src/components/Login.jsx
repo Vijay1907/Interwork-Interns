@@ -20,7 +20,7 @@ function Login(props) {
     }
 
     const handleLogin=async(e)=>{
-        e.preventDefault();       // to prevent page reload   
+        e.preventDefault();         
         let res= await axios.post("http://localhost:3000/credentials",credentials);
         if(res.data){
             if(res.data.success){
