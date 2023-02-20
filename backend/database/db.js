@@ -6,7 +6,7 @@ const dotenv= require('dotenv');
  dotenv.config({ path: __dirname + "/../.env" });
 
  const database =process.env.DATABASE
- const mongoPath ="mongodb://localhost:27017";
+ const mongoPath ="mongodb://localhost:27017/user";
  let _db;
 let mongoutil= {
     connectToServer: (cb)=>{

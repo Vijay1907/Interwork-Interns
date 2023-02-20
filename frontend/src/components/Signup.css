@@ -1,0 +1,29 @@
+.move{
+    margin: 0px 101px;
+    margin-top: 0px;
+  }
+  
+  .second{
+    margin: 0px 31px;
+  
+  }
+  .main{
+    display: flex;
+    margin: 19px 157px;
+    
+  }
+  
+  .third{
+    margin: 0px 97px;
+  
+  }
+  .button{
+    margin-top: 179px;
+    margin-left: -150px;
+    
+  }
+
+  .form{
+    margin-top: 115px;
+    BACKGROUND-COLOR: lightsteelblue;
+  }

@@ -37,7 +37,7 @@ app.get('/userdata',async(req,res)=>{
         res.status(200).send(data)
       }
     }else{
-      res.status(404).send({message : "Oops, Some error occured" ,success: false});
+      res.status(200).send({message : "Enter you email first" ,success: false});
     }
     
   }else{
@@ -51,7 +51,7 @@ app.put('/updateuser', async(req,res)=>{
   let {userName,userEmail, userContact, businessContact, businessName, password, country, city, address} = req.body;
     let db =mongoutil.getDb();
     if(db){
-      if(Object.keys(req.body).length>8){
+      if(userName&&userEmail&& userContact&& businessContact&& businessName&& password&& country&& city&& address){
         data = await db.collection(collection).updateOne({userEmail: userEmail},{$set : {
           userName: userName,
           userContact: userContact,
@@ -67,7 +67,7 @@ app.put('/updateuser', async(req,res)=>{
             res.status(404).send({message : "Oops, Some error occured" ,success: false});
           }
       }else{
-        res.status(404).send({message : "Oops, Some error occured" ,success: false});
+        res.status(200).send({message : "All fields must be filled",success: false});
       }
     }else{
       res.status(404).send({message:"databse is not connected",success: false})
@@ -80,7 +80,7 @@ app.put('/updateuser', async(req,res)=>{
     let {userName,userEmail, userContact, businessContact, businessName, password, country, city, address} = req.body;
     let db =mongoutil.getDb();
     if(db){
-      if(Object.keys(req.body).length>8){
+      if(userName&&userEmail&& userContact&& businessContact&& businessName&& password&& country&& city&& address){
       let data=await db.collection(collection).findOne({userEmail:userEmail},{projection:{_id:0}})
       if(data){
         res.status(200).send({message: "email already exist. Try another one",success: false})
@@ -103,7 +103,7 @@ app.put('/updateuser', async(req,res)=>{
           }
       }
     }else{
-      res.status(404).send({message : "Oops, Some error occured" ,success: false});
+      res.status(200).send({message : "All fields must be filled" ,success: false});
     }
      
   }else{
@@ -128,7 +128,7 @@ app.post('/credentials',async(req,res)=>{
       res.status(200).send({message:"Please signup first",success: false})
     }
    }else{
-    res.status(404).send({message:"databse is not connected",success: false})
+    res.status(200).send({message:"All fields must be filled",success: false})
   }
   }else{
     res.status(404).send({message:"databse is not connected",success: false})
