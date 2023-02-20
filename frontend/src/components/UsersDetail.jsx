@@ -55,12 +55,12 @@ function UsersDetail(props) {
         let res = await axios.put('http://localhost:3000/updateuser', blankForm);
         if(res.data){
             if(res.data.success){
-                props.showAlert(res.data.message,"success")
+                alert(res.data.message)
             }else{
-                props.showAlert(res.data.message,"danger")
+                alert(res.data.message)
             }
         }else{
-            props.showAlert("some error occured","danger")
+           alert("some error occured")
         } 
         setEditMode(true)
     }

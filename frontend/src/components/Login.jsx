@@ -14,7 +14,7 @@ function Login(props) {
     const handleChange = (e) => {
         const{name,value}= e.target
         setCredentials({
-            ...setCredentials,
+            ...credentials,
             [name] : value
         })
     }
@@ -25,13 +25,12 @@ function Login(props) {
         if(res.data){
             if(res.data.success){
                 props.setEmail(credentials.userEmail)
-                props.showAlert(res.data.message,"success")
                navigate("/userDetail")
             }else{
-                props.showAlert(res.data.message,"danger")
+              alert(res.data.message)
             }
         }else{
-            props.showAlert("some error occured","danger")
+           alert("error occured")
         } 
     } 
     
@@ -50,7 +49,7 @@ function Login(props) {
             <input type="password" value={credentials.password} onChange={handleChange} required className="form-control" id="password" aria-describedby="emailHelp" name='password' />
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
-                    <button type="submit" disabled={props.findLength(credentials)<2} onClick={handleLogin} style={{ width: "100%"}}  className="btn btn-primary my-2">Login</button>
+                    <button type="submit" disabled={Object.keys(credentials).length<2} onClick={handleLogin} style={{ width: "100%"}}  className="btn btn-primary my-2">Login</button>
                 </div>
          </form>
          </div>
